@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "todos": []
+    },
+    {
+        "id": "user1",
+        "todos": [
+            {
+                "id": "1747214061541",
+                "title": "Code",
+                "completed": false
+            },
+            {
+                "id": "1747214150730",
+                "title": "sleep",
+                "completed": false
+            }
+        ]
+    },
+    {
+        "id": "user2",
+        "todos": [
+            {
+                "id": "1747214177915",
+                "title": "play cricket",
+                "completed": false
+            }
+        ]
+    }
+]
