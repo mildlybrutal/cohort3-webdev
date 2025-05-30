@@ -57,18 +57,36 @@ function signinHandler(req, res) {
     }
 }
 
+function auth(req, res, next) {
+    const token = req.headers.authentication;
+
+    if (token) {
+        jwt.verify(token, JWT_SECRET, (err, decoded) => {
+            if (err) {
+                res.status(401).send({
+                    message: "Unauthorized",
+                });
+            } else {
+                req.user = decoded;
+                next();
+            }
+        });
+    }
+    if (err) {
+        res.status(401).send({
+            message: "Unauthorized",
+        });
+    }
+}
+
 function userHandler(req, res) {
-    const token = req.headers.token;
-
-    const decodedInfo = jwt.verify(token, JWT_SECRET);
-
-    const username = decodedInfo.username;
-
+    const username = req.user;
     const user = users.find((user) => user.username === username);
 
     if (user) {
         res.send({
             username: user.username,
+            password: user.password,
         });
     } else {
         res.status(401).send({
@@ -81,7 +99,7 @@ app.post("/signup", signupHandler);
 
 app.post("/signin", signinHandler);
 
-app.get("/me", userHandler);
+app.get("/me", auth, userHandler);
 
 app.listen(3000, () => {
     console.log("Lmao, running on 3000");
