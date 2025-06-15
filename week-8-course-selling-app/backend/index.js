@@ -14,7 +14,7 @@ app.use("/api/v1/admin", adminRouter);
 
 async function main() {
     await mongoose.connect(
-        "mongodb+srv://akashsingu24:GmoJ9ILCqlmp7Y40@cluster0.p73rgdf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        MONGODB_URI
     );
     app.listen(3000, () => {
         console.log("Server running at port 3000");
