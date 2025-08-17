@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "@repo/typescript-config": "workspace:*",
+   "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
+  },
   "dependencies": {
     "@types/ws": "^8.18.1",
     "ws": "^8.18.3"
